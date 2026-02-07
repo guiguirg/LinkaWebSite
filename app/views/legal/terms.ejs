@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+    
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .legal-page {
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        .legal-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        .legal-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .legal-hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .legal-content {
+            max-width: 900px;
+            margin: -2rem auto 4rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legal-content h2 {
+            color: #1e293b;
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .legal-content h3 {
+            color: #334155;
+            font-size: 1.35rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .legal-content p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+        
+        .legal-content ul, .legal-content ol {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            padding-left: 2rem;
+        }
+        
+        .legal-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .legal-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: #f1f5f9;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .last-update {
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="legal-page">
+    <%- include('../partials/header') %>
+    
+    <div class="legal-hero">
+        <div class="container">
+            <h1>📜 Termos de Uso</h1>
+            <p>Condições gerais de uso da Plataforma Linka</p>
+        </div>
+    </div>
+    
+    <main>
+        <div class="container">
+            <div class="legal-content">
+                <h2>1. ACEITAÇÃO DOS TERMOS</h2>
+                <p>Bem-vindo à <strong>LINKA</strong>! Estes Termos de Uso ("Termos") constituem um acordo legal vinculante entre você ("Usuário", "você" ou "seu") e a plataforma LINKA, operada através dos domínios <strong>applinka.com.br</strong> e <strong>applinka.com</strong> ("Plataforma", "Linka", "nós", "nosso" ou "conosco").</p>
+                
+                <div class="highlight-box">
+                    <p><strong>⚠️ ATENÇÃO:</strong> Ao acessar, navegar ou utilizar qualquer funcionalidade da Plataforma Linka, você declara ter lido, compreendido e concordado integralmente com estes Termos de Uso e com nossa Política de Privacidade. Se você não concordar com qualquer disposição destes Termos, NÃO utilize a Plataforma.</p>
+                </div>
+
+                <p>Estes Termos regem o uso da Plataforma e de todos os serviços, funcionalidades, conteúdos e produtos oferecidos através dela.</p>
+
+                <h2>2. DEFINIÇÕES</h2>
+                <p>Para melhor compreensão destes Termos, consideram-se as seguintes definições:</p>
+                <ul>
+                    <li><strong>Plataforma:</strong> Sistema digital acessível através dos domínios applinka.com.br e applinka.com, incluindo aplicativos móveis;</li>
+                    <li><strong>Usuário:</strong> Qualquer pessoa que acesse ou utilize a Plataforma;</li>
+                    <li><strong>Cliente:</strong> Usuário que busca contratar serviços através da Plataforma;</li>
+                    <li><strong>Prestador de Serviço ou Profissional:</strong> Usuário cadastrado que oferece serviços através da Plataforma;</li>
+                    <li><strong>Serviços:</strong> Funcionalidades oferecidas pela Plataforma para conectar Clientes e Prestadores de Serviço;</li>
+                    <li><strong>Conta:</strong> Registro de Usuário na Plataforma com credenciais únicas de acesso;</li>
+                    <li><strong>Conteúdo:</strong> Textos, imagens, vídeos, comentários, avaliações e qualquer informação publicada na Plataforma.</li>
+                </ul>
+
+                <h2>3. DESCRIÇÃO DA PLATAFORMA</h2>
+                
+                <h3>3.1. Natureza do Serviço</h3>
+                <p>A Linka é uma <strong>plataforma digital de intermediação</strong> que conecta Clientes que buscam serviços diversos com Prestadores de Serviço qualificados. Atuamos exclusivamente como <strong>facilitadores dessa conexão</strong>, não sendo prestadores diretos dos serviços anunciados.</p>
+
+                <h3>3.2. Serviços Disponíveis</h3>
+                <p>A Plataforma oferece intermediação nas seguintes categorias (não limitadas a):</p>
+                <ul>
+                    <li>Serviços Domésticos (limpeza, jardinagem, manutenção)</li>
+                    <li>Reformas e Reparos (encanamento, eletricidade, pintura, marcenaria)</li>
+                    <li>Tecnologia (informática, instalação de equipamentos)</li>
+                    <li>Beleza e Bem-estar (cabeleireiro, manicure, massoterapia)</li>
+                    <li>Outros serviços profissionais diversos</li>
+                </ul>
+
+                <h3>3.3. Não Somos Parte do Contrato de Prestação de Serviço</h3>
+                <p><strong>IMPORTANTE:</strong> A Linka <strong>NÃO</strong> é parte da relação contratual estabelecida entre Cliente e Prestador de Serviço. Não empregamos, contratamos ou supervisionamos os Prestadores de Serviço. A execução do serviço é de exclusiva responsabilidade do Prestador contratado.</p>
+
+                <h2>4. CADASTRO E CONTA DE USUÁRIO</h2>
+
+                <h3>4.1. Requisitos para Cadastro</h3>
+                <p>Para utilizar a Plataforma, você deve:</p>
+                <ul>
+                    <li>Ter pelo menos 18 (dezoito) anos de idade ou ser emancipado;</li>
+                    <li>Possuir capacidade civil plena;</li>
+                    <li>Fornecer informações verdadeiras, precisas, atualizadas e completas;</li>
+                    <li>Manter suas informações cadastrais atualizadas;</li>
+                    <li>Criar apenas UMA conta por pessoa física ou jurídica;</li>
+                    <li>Não ter sido previamente banido ou suspenso da Plataforma.</li>
+                </ul>
+
+                <h3>4.2. Responsabilidade pelas Credenciais</h3>
+                <p>Você é integralmente responsável por:</p>
+                <ul>
+                    <li>Manter a confidencialidade de suas credenciais de acesso (e-mail e senha);</li>
+                    <li>Todas as atividades realizadas em sua conta;</li>
+                    <li>Notificar imediatamente a Linka sobre qualquer uso não autorizado de sua conta;</li>
+                    <li>Desconectar-se da conta ao final de cada sessão em dispositivos compartilhados.</li>
+                </ul>
+                <p><strong>A Linka não se responsabiliza por perdas ou danos decorrentes do uso não autorizado de sua conta.</strong></p>
+
+                <h3>4.3. Veracidade das Informações</h3>
+                <p>Ao se cadastrar, você declara e garante que todas as informações fornecidas são verdadeiras. O fornecimento de informações falsas, fraudulentas ou de terceiros constitui violação grave destes Termos e poderá resultar em:</p>
+                <ul>
+                    <li>Suspensão ou exclusão imediata da conta;</li>
+                    <li>Responsabilização civil e criminal;</li>
+                    <li>Impedimento permanente de uso da Plataforma.</li>
+                </ul>
+
+                <h3>4.4. Cadastro de Prestadores de Serviço</h3>
+                <p>Prestadores de Serviço devem adicionalmente:</p>
+                <ul>
+                    <li>Possuir qualificação adequada para os serviços oferecidos;</li>
+                    <li>Apresentar documentos comprobatórios quando solicitado;</li>
+                    <li>Manter regularidade fiscal e tributária (quando aplicável);</li>
+                    <li>Possuir autorização legal para exercer a atividade profissional;</li>
+                    <li>Manter seguros e licenças exigidos pela legislação.</li>
+                </ul>
+
+                <h2>5. OBRIGAÇÕES DOS USUÁRIOS</h2>
+
+                <h3>5.1. Obrigações Gerais</h3>
+                <p>Todos os Usuários devem:</p>
+                <ul>
+                    <li>Cumprir rigorosamente estes Termos e todas as leis aplicáveis;</li>
+                    <li>Tratar outros Usuários com respeito e profissionalismo;</li>
+                    <li>Fornecer informações precisas e honestas;</li>
+                    <li>Não utilizar a Plataforma para fins ilegais, fraudulentos ou não autorizados;</li>
+                    <li>Não tentar burlar, interferir ou comprometer a segurança da Plataforma;</li>
+                    <li>Não coletar dados de outros Usuários sem autorização;</li>
+                    <li>Não criar contas falsas ou múltiplas;</li>
+                    <li>Não publicar conteúdo ofensivo, difamatório, discriminatório ou ilegal.</li>
+                </ul>
+
+                <h3>5.2. Obrigações Específicas dos Clientes</h3>
+                <p>Os Clientes devem:</p>
+                <ul>
+                    <li>Descrever com precisão os serviços necessários;</li>
+                    <li>Fornecer informações verdadeiras sobre localização e requisitos;</li>
+                    <li>Estar presente no local e horário agendados;</li>
+                    <li>Efetuar pagamentos conforme acordado;</li>
+                    <li>Fornecer feedback honesto e construtivo sobre os serviços;</li>
+                    <li>Comunicar cancelamentos com antecedência razoável;</li>
+                    <li>Tratar os Prestadores com respeito e dignidade.</li>
+                </ul>
+
+                <h3>5.3. Obrigações Específicas dos Prestadores de Serviço</h3>
+                <p>Os Prestadores devem:</p>
+                <ul>
+                    <li>Executar os serviços com qualidade, profissionalismo e pontualidade;</li>
+                    <li>Possuir todas as ferramentas, equipamentos e materiais necessários (salvo acordo contrário);</li>
+                    <li>Manter regularidade com obrigações fiscais e trabalhistas;</li>
+                    <li>Respeitar a privacidade e propriedade dos Clientes;</li>
+                    <li>Comunicar imprevistos ou atrasos imediatamente;</li>
+                    <li>Não solicitar pagamento fora da Plataforma para burlar taxas;</li>
+                    <li>Manter seguros de responsabilidade civil quando exigido por lei;</li>
+                    <li>Cumprir todas as normas de segurança do trabalho;</li>
+                    <li>Não subcontratar serviços sem autorização do Cliente;</li>
+                    <li>Manter disponibilidade atualizada no perfil.</li>
+                </ul>
+
+                <h2>6. USO PROIBIDO DA PLATAFORMA</h2>
+                <p>É expressamente PROIBIDO:</p>
+
+                <h3>6.1. Ações Ilegais ou Fraudulentas</h3>
+                <ul>
+                    <li>Utilizar a Plataforma para atividades ilegais, criminosas ou fraudulentas;</li>
+                    <li>Violar direitos de propriedade intelectual de terceiros;</li>
+                    <li>Praticar ou facilitar lavagem de dinheiro, evasão fiscal ou financiamento ao terrorismo;</li>
+                    <li>Falsificar documentos, identidades ou informações;</li>
+                    <li>Realizar esquemas de pirâmide, golpes ou fraudes financeiras.</li>
+                </ul>
+
+                <h3>6.2. Abuso da Plataforma</h3>
+                <ul>
+                    <li>Criar múltiplas contas para manipular avaliações ou rankings;</li>
+                    <li>Publicar avaliações falsas, difamatórias ou enganosas;</li>
+                    <li>Fazer spam, enviar mensagens não solicitadas ou praticar phishing;</li>
+                    <li>Assediar, ameaçar, intimidar ou discriminar outros Usuários;</li>
+                    <li>Solicitar ou oferecer serviços sexuais, ilegais ou imorais;</li>
+                    <li>Burlar o sistema de pagamentos para evitar taxas;</li>
+                    <li>Usar bots, scripts ou automações não autorizadas.</li>
+                </ul>
+
+                <h3>6.3. Ataques Técnicos</h3>
+                <ul>
+                    <li>Realizar ataques DDoS, injeção de código, hacking ou tentativas de invasão;</li>
+                    <li>Explorar vulnerabilidades de segurança;</li>
+                    <li>Fazer engenharia reversa, descompilar ou modificar a Plataforma;</li>
+                    <li>Extrair dados através de scraping, crawling ou métodos automatizados;</li>
+                    <li>Interferir no funcionamento normal da Plataforma.</li>
+                </ul>
+
+                <h3>6.4. Violação de Direitos</h3>
+                <ul>
+                    <li>Publicar conteúdo protegido por direitos autorais sem autorização;</li>
+                    <li>Usar marcas registradas de terceiros sem permissão;</li>
+                    <li>Violar direitos de privacidade ou imagem de terceiros;</li>
+                    <li>Divulgar informações confidenciais ou dados pessoais de outros.</li>
+                </ul>
+
+                <h2>7. PAGAMENTOS E VALORES</h2>
+
+                <h3>7.1. Forma de Pagamento</h3>
+                <p>Os pagamentos pelos serviços contratados são processados através da Plataforma, utilizando métodos seguros como:</p>
+                <ul>
+                    <li>Cartões de crédito e débito;</li>
+                    <li>PIX;</li>
+                    <li>Boleto bancário;</li>
+                    <li>Carteiras digitais autorizadas.</li>
+                </ul>
+
+                <h3>7.2. Taxa de Serviço da Plataforma</h3>
+                <p>A Linka cobra uma <strong>taxa de intermediação</strong> para manutenção e operação da Plataforma. O percentual específico é informado claramente antes da confirmação de cada transação e pode variar conforme:</p>
+                <ul>
+                    <li>Tipo de serviço;</li>
+                    <li>Valor da transação;</li>
+                    <li>Categoria do Prestador (nível de verificação, avaliações);</li>
+                    <li>Promoções temporárias.</li>
+                </ul>
+
+                <h3>7.3. Repasse aos Prestadores</h3>
+                <p>Os valores devidos aos Prestadores de Serviço são repassados conforme cronograma estabelecido, após dedução das taxas da Plataforma e impostos retidos na fonte quando aplicável.</p>
+
+                <h3>7.4. Cancelamentos e Reembolsos</h3>
+                <p><strong>Política de Cancelamento:</strong></p>
+                <ul>
+                    <li><strong>Cancelamento com mais de 24h de antecedência:</strong> Reembolso integral;</li>
+                    <li><strong>Cancelamento entre 12h e 24h:</strong> Retenção de 25% como taxa de cancelamento;</li>
+                    <li><strong>Cancelamento com menos de 12h ou no-show:</strong> Retenção de 50%;</li>
+                    <li><strong>Cancelamento pelo Prestador sem justa causa:</strong> Penalidade ao Prestador, reembolso integral ao Cliente.</li>
+                </ul>
+
+                <p><strong>Exceções:</strong> Situações de força maior, emergências médicas ou outras circunstâncias extraordinárias serão analisadas caso a caso.</p>
+
+                <h3>7.5. Disputas de Pagamento</h3>
+                <p>Em caso de disputa sobre pagamento ou qualidade do serviço, a Linka poderá:</p>
+                <ul>
+                    <li>Reter temporariamente o pagamento até resolução;</li>
+                    <li>Solicitar evidências de ambas as partes;</li>
+                    <li>Tomar decisão fundamentada com base nas informações disponíveis;</li>
+                    <li>Realizar reembolso parcial ou integral conforme o caso.</li>
+                </ul>
+
+                <h3>7.6. Pagamentos Fora da Plataforma</h3>
+                <p><strong>É ESTRITAMENTE PROIBIDO</strong> solicitar ou realizar pagamentos fora da Plataforma para burlar as taxas de serviço. Esta prática resulta em:</p>
+                <ul>
+                    <li>Suspensão ou exclusão permanente da conta;</li>
+                    <li>Perda de todas as proteções da Plataforma;</li>
+                    <li>Possível responsabilização legal;</li>
+                    <li>Impedimento de reembolsos ou mediação de disputas.</li>
+                </ul>
+
+                <h2>8. AVALIAÇÕES E FEEDBACK</h2>
+
+                <h3>8.1. Sistema de Avaliações</h3>
+                <p>A Plataforma disponibiliza sistema de avaliações mútuas onde Clientes e Prestadores podem avaliar uns aos outros após a conclusão do serviço.</p>
+
+                <h3>8.2. Diretrizes para Avaliações</h3>
+                <p>Ao deixar uma avaliação, você concorda em:</p>
+                <ul>
+                    <li>Fornecer feedback honesto, preciso e construtivo;</li>
+                    <li>Basear-se exclusivamente na experiência real com o serviço;</li>
+                    <li>Não incluir conteúdo ofensivo, difamatório, discriminatório ou abusivo;</li>
+                    <li>Não violar a privacidade de outras pessoas;</li>
+                    <li>Não fazer ameaças ou chantagens;</li>
+                    <li>Não usar linguagem obscena ou inadequada.</li>
+                </ul>
+
+                <h3>8.3. Moderação de Avaliações</h3>
+                <p>A Linka reserva-se o direito de:</p>
+                <ul>
+                    <li>Moderar, editar ou remover avaliações que violem estas diretrizes;</li>
+                    <li>Investigar avaliações suspeitas de serem falsas ou manipuladas;</li>
+                    <li>Suspender Usuários que pratiquem avaliações fraudulentas;</li>
+                    <li>Não publicar avaliações que contenham dados pessoais sensíveis.</li>
+                </ul>
+
+                <h3>8.4. Impossibilidade de Remoção</h3>
+                <p>Avaliações legítimas e que cumpram as diretrizes <strong>não serão removidas</strong> a pedido do avaliado, garantindo a autenticidade e confiabilidade do sistema.</p>
+
+                <h2>9. PROPRIEDADE INTELECTUAL</h2>
+
+                <h3>9.1. Direitos da Linka</h3>
+                <p>Todos os direitos de propriedade intelectual relacionados à Plataforma pertencem exclusivamente à Linka, incluindo mas não limitado a:</p>
+                <ul>
+                    <li>Marca "Linka" e variações;</li>
+                    <li>Logotipos, design e identidade visual;</li>
+                    <li>Código-fonte, algoritmos e tecnologias;</li>
+                    <li>Textos, conteúdos e materiais originais;</li>
+                    <li>Banco de dados e compilações;</li>
+                    <li>Processos e métodos de negócio.</li>
+                </ul>
+
+                <h3>9.2. Licença de Uso</h3>
+                <p>Concedemos a você uma licença <strong>limitada, não exclusiva, intransferível e revogável</strong> para acessar e usar a Plataforma exclusivamente para os fins previstos nestes Termos.</p>
+                <p>Esta licença <strong>NÃO</strong> autoriza você a:</p>
+                <ul>
+                    <li>Copiar, modificar, distribuir ou criar obras derivadas;</li>
+                    <li>Fazer engenharia reversa ou descompilar;</li>
+                    <li>Remover avisos de direitos autorais ou marcas;</li>
+                    <li>Usar a Plataforma para criar produto ou serviço concorrente;</li>
+                    <li>Sublicenciar ou transferir seus direitos de uso.</li>
+                </ul>
+
+                <h3>9.3. Conteúdo do Usuário</h3>
+                <p>Você mantém todos os direitos sobre o conteúdo que publica na Plataforma (fotos, textos, vídeos, comentários). No entanto, ao publicar, você concede à Linka uma licença <strong>mundial, não exclusiva, isenta de royalties, sublicenciável e transferível</strong> para usar, reproduzir, distribuir, exibir e modificar esse conteúdo exclusivamente para operação, promoção e melhoria da Plataforma.</p>
+
+                <h3>9.4. Conteúdo Infrator</h3>
+                <p>Se você acredita que algum conteúdo na Plataforma viola seus direitos de propriedade intelectual, entre em contato através de: <strong>legal@linka.com.br</strong></p>
+
+                <h2>10. PRIVACIDADE E PROTEÇÃO DE DADOS</h2>
+                <p>A coleta, uso, armazenamento e proteção de seus dados pessoais são regidos por nossa <strong><a href="/politica-de-privacidade">Política de Privacidade</a></strong>, que é parte integrante destes Termos.</p>
+                <p>Ao utilizar a Plataforma, você concorda com o tratamento de seus dados conforme descrito na Política de Privacidade, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).</p>
+
+                <h2>11. LIMITAÇÃO DE RESPONSABILIDADE</h2>
+
+                <h3>11.1. Natureza de Intermediação</h3>
+                <p><strong>A LINKA ATUA EXCLUSIVAMENTE COMO INTERMEDIADORA.</strong> Não somos parte da relação contratual entre Cliente e Prestador de Serviço. Portanto:</p>
+                <ul>
+                    <li>NÃO somos responsáveis pela qualidade, segurança, legalidade ou pontualidade dos serviços prestados;</li>
+                    <li>NÃO garantimos que os Prestadores possuam todas as qualificações declaradas;</li>
+                    <li>NÃO nos responsabilizamos por danos materiais ou pessoais decorrentes da execução dos serviços;</li>
+                    <li>NÃO somos responsáveis por inadimplência, cancelamentos ou disputas entre as partes;</li>
+                    <li>NÃO respondemos por atos, omissões, negligência ou imperícia dos Prestadores.</li>
+                </ul>
+
+                <h3>11.2. Verificação de Usuários</h3>
+                <p>Embora realizemos esforços razoáveis para verificar informações básicas dos Usuários, <strong>NÃO garantimos</strong> a veracidade, precisão ou confiabilidade de:</p>
+                <ul>
+                    <li>Informações fornecidas pelos Usuários;</li>
+                    <li>Qualificações profissionais declaradas;</li>
+                    <li>Documentos apresentados;</li>
+                    <li>Avaliações e comentários publicados.</li>
+                </ul>
+
+                <h3>11.3. Disponibilidade da Plataforma</h3>
+                <p>Não garantimos que a Plataforma:</p>
+                <ul>
+                    <li>Estará disponível 24/7 sem interrupções;</li>
+                    <li>Funcionará livre de erros, bugs ou falhas;</li>
+                    <li>Será compatível com todos os dispositivos e navegadores;</li>
+                    <li>Terá velocidade ou desempenho consistentes;</li>
+                    <li>Estará protegida contra todos os tipos de ataques cibernéticos.</li>
+                </ul>
+                <p>Reservamo-nos o direito de suspender temporariamente a Plataforma para manutenção, atualizações ou por razões técnicas.</p>
+
+                <h3>11.4. Conteúdo de Terceiros</h3>
+                <p>A Plataforma pode conter links para sites de terceiros. NÃO somos responsáveis pelo conteúdo, políticas de privacidade ou práticas de sites externos.</p>
+
+                <h3>11.5. Extensão da Responsabilidade</h3>
+                <p><strong>NA MÁXIMA EXTENSÃO PERMITIDA PELA LEI:</strong></p>
+                <ul>
+                    <li>A Linka não será responsável por danos indiretos, incidentais, especiais, consequenciais ou punitivos;</li>
+                    <li>Nossa responsabilidade total não excederá o valor das taxas pagas por você nos últimos 12 meses;</li>
+                    <li>Não nos responsabilizamos por lucros cessantes, perda de dados ou oportunidades de negócio;</li>
+                    <li>Não respondemos por caso fortuito, força maior ou atos de terceiros.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ IMPORTANTE:</strong> Esta limitação de responsabilidade não se aplica a situações onde a lei brasileira proíba tal limitação, especialmente em relações de consumo regidas pelo Código de Defesa do Consumidor.</p>
+                </div>
+
+                <h2>12. INDENIZAÇÃO</h2>
+                <p>Você concorda em indenizar, defender e isentar a Linka, seus diretores, funcionários, parceiros e representantes de toda e qualquer:</p>
+                <ul>
+                    <li>Reclamação, demanda, ação judicial ou administrativa;</li>
+                    <li>Perda, dano, responsabilidade, custo ou despesa (incluindo honorários advocatícios);</li>
+                </ul>
+                <p>Decorrentes de ou relacionadas a:</p>
+                <ul>
+                    <li>Sua violação destes Termos;</li>
+                    <li>Seu uso inadequado da Plataforma;</li>
+                    <li>Violação de direitos de terceiros;</li>
+                    <li>Informações falsas ou enganosas fornecidas por você;</li>
+                    <li>Sua conduta na prestação ou contratação de serviços;</li>
+                    <li>Conteúdo que você publicar na Plataforma.</li>
+                </ul>
+
+                <h2>13. SUSPENSÃO E ENCERRAMENTO</h2>
+
+                <h3>13.1. Suspensão pela Linka</h3>
+                <p>Podemos suspender ou encerrar sua conta imediatamente, sem aviso prévio, se:</p>
+                <ul>
+                    <li>Você violar qualquer disposição destes Termos;</li>
+                    <li>Fornecer informações falsas ou fraudulentas;</li>
+                    <li>Praticar atividades ilegais ou abusivas;</li>
+                    <li>Receber múltiplas reclamações ou avaliações negativas;</li>
+                    <li>Representar risco à segurança de outros Usuários;</li>
+                    <li>Tentar burlar sistemas de segurança ou pagamento;</li>
+                    <li>Houver suspeita fundamentada de fraude;</li>
+                    <li>Por determinação judicial ou de autoridade competente.</li>
+                </ul>
+
+                <h3>13.2. Encerramento pelo Usuário</h3>
+                <p>Você pode encerrar sua conta a qualquer momento através das configurações da Plataforma ou contactando nosso suporte.</p>
+
+                <h3>13.3. Efeitos do Encerramento</h3>
+                <p>Após o encerramento:</p>
+                <ul>
+                    <li>Você perderá acesso à conta e ao histórico;</li>
+                    <li>Transações pendentes serão processadas conforme aplicável;</li>
+                    <li>Suas obrigações financeiras pendentes permanecem;</li>
+                    <li>Podemos reter dados conforme Política de Privacidade e obrigações legais;</li>
+                    <li>Avaliações e conteúdos podem permanecer anonimizados;</li>
+                    <li>Disposições que por natureza devam sobreviver continuarão vigentes.</li>
+                </ul>
+
+                <h2>14. FORÇA MAIOR</h2>
+                <p>Não seremos responsabilizados por atrasos ou falhas no cumprimento de nossas obrigações decorrentes de eventos de força maior, incluindo mas não limitado a:</p>
+                <ul>
+                    <li>Desastres naturais (terremotos, inundações, incêndios);</li>
+                    <li>Guerras, atos de terrorismo, distúrbios civis;</li>
+                    <li>Pandemias, epidemias e emergências de saúde pública;</li>
+                    <li>Falhas de infraestrutura de internet ou telecomunicações;</li>
+                    <li>Ataques cibernéticos em larga escala;</li>
+                    <li>Atos ou omissões de autoridades governamentais;</li>
+                    <li>Greves, lockouts e conflitos trabalhistas;</li>
+                    <li>Qualquer outro evento fora de nosso controle razoável.</li>
+                </ul>
+
+                <h2>15. RESOLUÇÃO DE DISPUTAS</h2>
+
+                <h3>15.1. Mediação Amigável</h3>
+                <p>Encorajamos que disputas entre Clientes e Prestadores sejam resolvidas amigavelmente. A Linka oferece suporte de mediação, mas não é obrigada a resolver todas as disputas.</p>
+
+                <h3>15.2. Arbitragem (Opcional)</h3>
+                <p>As partes podem optar por submeter disputas a arbitragem através de câmara especializada, com custos compartilhados.</p>
+
+                <h3>15.3. Jurisdição e Foro</h3>
+                <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Para resolução de controvérsias entre a Linka e Usuários, fica eleito o foro da comarca de <strong>residência do Usuário</strong> (consumidor), renunciando-se a qualquer outro, por mais privilegiado que seja.</p>
+
+                <h2>16. DISPOSIÇÕES GERAIS</h2>
+
+                <h3>16.1. Independência das Cláusulas</h3>
+                <p>Se qualquer disposição destes Termos for considerada inválida ou inexequível, as demais permanecerão em pleno vigor e efeito.</p>
+
+                <h3>16.2. Renúncia</h3>
+                <p>A não exigência de cumprimento de qualquer disposição não constituirá renúncia de direitos.</p>
+
+                <h3>16.3. Cessão</h3>
+                <p>Você não pode ceder ou transferir seus direitos sob estes Termos sem nosso consentimento prévio por escrito. A Linka pode ceder livremente seus direitos.</p>
+
+                <h3>16.4. Acordo Integral</h3>
+                <p>Estes Termos, juntamente com a Política de Privacidade, constituem o acordo integral entre você e a Linka.</p>
+
+                <h3>16.5. Idioma</h3>
+                <p>Estes Termos são redigidos em português (Brasil). Quaisquer tradução é fornecida apenas para conveniência; em caso de conflito, prevalece a versão em português.</p>
+
+                <h3>16.6. Notificações</h3>
+                <p>Notificações oficiais serão enviadas através do e-mail cadastrado ou por aviso na Plataforma. É sua responsabilidade manter e-mail atualizado.</p>
+
+                <h2>17. ALTERAÇÕES DESTES TERMOS</h2>
+                <p>Reservamo-nos o direito de modificar estes Termos a qualquer momento. Quando realizarmos alterações materiais:</p>
+                <ul>
+                    <li>Publicaremos a nova versão na Plataforma;</li>
+                    <li>Atualizaremos a data de "Última Atualização";</li>
+                    <li>Notificaremos você por e-mail ou aviso na Plataforma;</li>
+                    <li>Concederemos prazo razoável para revisão.</li>
+                </ul>
+                <p>Seu uso continuado da Plataforma após alterações constitui aceitação dos novos termos. Se você não concordar, deve interromper o uso e encerrar sua conta.</p>
+
+                <h2>18. CONFORMIDADE LEGAL</h2>
+                <p>Estes Termos foram elaborados em conformidade com:</p>
+                <ul>
+                    <li><strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong></li>
+                    <li><strong>Marco Civil da Internet (Lei nº 12.965/2014)</strong></li>
+                    <li><strong>Código de Defesa do Consumidor (Lei nº 8.078/1990)</strong></li>
+                    <li><strong>Código Civil Brasileiro (Lei nº 10.406/2002)</strong></li>
+                    <li><strong>Legislação trabalhista e tributária aplicável</strong></li>
+                </ul>
+
+                <h2>19. CONTATO</h2>
+                <p>Para dúvidas, sugestões ou reclamações sobre estes Termos de Uso:</p>
+                <ul>
+                    <li><strong>E-mail Geral:</strong> contato@linka.com.br</li>
+                    <li><strong>E-mail Jurídico:</strong> legal@linka.com.br</li>
+                    <li><strong>Suporte:</strong> suporte@linka.com.br</li>
+                    <li><strong>Telefone:</strong> (53) 9.9943-7775</li>
+                    <li><strong>Endereço:</strong> Rio Grande, RS - Brasil</li>
+                </ul>
+
+                <h2>20. ACEITAÇÃO</h2>
+                <div class="highlight-box">
+                    <p><strong>AO CLICAR EM "ACEITO" OU "CONCORDO", OU AO UTILIZAR A PLATAFORMA LINKA, VOCÊ DECLARA QUE:</strong></p>
+                    <ul>
+                        <li>Leu, compreendeu e concordou integralmente com estes Termos de Uso;</li>
+                        <li>Leu e concordou com a Política de Privacidade;</li>
+                        <li>Possui capacidade legal para celebrar este acordo;</li>
+                        <li>Fornecerá informações verdadeiras e precisas;</li>
+                        <li>Cumprirá todas as obrigações aqui estabelecidas.</li>
+                    </ul>
+                </div>
+
+                <div class="last-update">
+                    <p><strong>Última atualização:</strong> 02 de fevereiro de 2026</p>
+                    <p><strong>Versão:</strong> 1.0</p>
+                    <p><strong>Vigência:</strong> Estes Termos entram em vigor imediatamente após sua aceitação</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+    
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .legal-page {
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+        
+        .legal-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        .legal-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .legal-hero p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .legal-content {
+            max-width: 900px;
+            margin: -2rem auto 4rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .legal-content h2 {
+            color: #1e293b;
+            font-size: 1.75rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .legal-content h3 {
+            color: #334155;
+            font-size: 1.35rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .legal-content p {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+        
+        .legal-content ul, .legal-content ol {
+            color: #475569;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            padding-left: 2rem;
+        }
+        
+        .legal-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .legal-content strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: #f1f5f9;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        .last-update {
+            text-align: center;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="legal-page">
+    <%- include('../partials/header') %>
+    
+    <div class="legal-hero">
+        <div class="container">
+            <h1>📋 Política de Privacidade</h1>
+            <p>Transparência e proteção dos seus dados pessoais</p>
+        </div>
+    </div>
+    
+    <main>
+        <div class="container">
+            <div class="legal-content">
+                <h2>1. INTRODUÇÃO</h2>
+                <p>A presente Política de Privacidade ("Política") descreve como a <strong>LINKA</strong>, plataforma digital operada através do domínio <strong>applinka.com.br</strong> e <strong>applinka.com</strong> ("Plataforma", "nós", "nosso" ou "conosco"), coleta, usa, armazena, processa e protege as informações pessoais dos usuários ("você", "seu" ou "Usuário").</p>
+                
+                <p>Esta Política está em conformidade com a <strong>Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)</strong>, o <strong>Marco Civil da Internet (Lei nº 12.965/2014)</strong>, o <strong>Código de Defesa do Consumidor (Lei nº 8.078/1990)</strong> e demais legislações aplicáveis à proteção de dados e privacidade no Brasil.</p>
+                
+                <div class="highlight-box">
+                    <p><strong>⚠️ IMPORTANTE:</strong> Ao utilizar a Plataforma Linka, você declara ter lido, compreendido e concordado integralmente com os termos desta Política de Privacidade. Caso não concorde, pedimos que não utilize nossos serviços.</p>
+                </div>
+
+                <h2>2. DEFINIÇÕES</h2>
+                <p>Para fins desta Política, consideram-se:</p>
+                <ul>
+                    <li><strong>Dados Pessoais:</strong> Informações relacionadas a pessoa natural identificada ou identificável;</li>
+                    <li><strong>Dados Pessoais Sensíveis:</strong> Dados sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou organização de caráter religioso, filosófico ou político, dados referentes à saúde ou vida sexual, dados genéticos ou biométricos;</li>
+                    <li><strong>Titular:</strong> Pessoa natural a quem se referem os dados pessoais;</li>
+                    <li><strong>Controlador:</strong> A Linka, responsável pelas decisões referentes ao tratamento de dados pessoais;</li>
+                    <li><strong>Tratamento:</strong> Toda operação realizada com dados pessoais, como coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, distribuição, processamento, arquivamento, armazenamento, eliminação, avaliação ou controle da informação, modificação, comunicação, transferência, difusão ou extração.</li>
+                </ul>
+
+                <h2>3. DADOS COLETADOS</h2>
+                
+                <h3>3.1. Dados Fornecidos Diretamente pelo Usuário</h3>
+                <p>Coletamos as seguintes categorias de dados quando você se cadastra ou utiliza nossos serviços:</p>
+                
+                <p><strong>Para Clientes (Tomadores de Serviço):</strong></p>
+                <ul>
+                    <li>Nome completo</li>
+                    <li>CPF</li>
+                    <li>Endereço de e-mail</li>
+                    <li>Número de telefone/celular</li>
+                    <li>Data de nascimento</li>
+                    <li>Endereço completo (CEP, logradouro, número, complemento, bairro, cidade, estado)</li>
+                    <li>Dados de login (e-mail e senha criptografada)</li>
+                    <li>Foto de perfil (opcional)</li>
+                    <li>Histórico de serviços solicitados</li>
+                    <li>Avaliações e comentários realizados</li>
+                </ul>
+
+                <p><strong>Para Prestadores de Serviço (Profissionais):</strong></p>
+                <ul>
+                    <li>Nome completo ou razão social</li>
+                    <li>CPF ou CNPJ</li>
+                    <li>Endereço de e-mail</li>
+                    <li>Número de telefone/celular</li>
+                    <li>Data de nascimento</li>
+                    <li>Endereço completo</li>
+                    <li>Dados profissionais (categoria de serviço, especialidades, experiência, qualificações)</li>
+                    <li>Documentos comprobatórios (RG, comprovante de residência, certificados profissionais)</li>
+                    <li>Dados bancários para recebimento de pagamentos</li>
+                    <li>Foto de perfil e fotos de trabalhos realizados</li>
+                    <li>Histórico de serviços prestados</li>
+                    <li>Avaliações recebidas</li>
+                </ul>
+
+                <h3>3.2. Dados Coletados Automaticamente</h3>
+                <p>Ao utilizar a Plataforma, coletamos automaticamente:</p>
+                <ul>
+                    <li><strong>Dados de Navegação:</strong> Endereço IP, tipo de navegador, páginas acessadas, tempo de permanência, links clicados, idioma, sistema operacional;</li>
+                    <li><strong>Dados de Dispositivo:</strong> Modelo do dispositivo, identificador único, operadora de telefonia, tipo de conexão;</li>
+                    <li><strong>Dados de Localização:</strong> Localização aproximada baseada em IP e, com sua permissão expressa, localização precisa via GPS;</li>
+                    <li><strong>Cookies e Tecnologias Similares:</strong> Conforme descrito na Seção 8 desta Política;</li>
+                    <li><strong>Logs de Acesso:</strong> Data e hora de acesso, funcionalidades utilizadas, erros ocorridos.</li>
+                </ul>
+
+                <h3>3.3. Dados de Terceiros</h3>
+                <p>Podemos receber dados de terceiros, incluindo:</p>
+                <ul>
+                    <li>Informações de perfis públicos de redes sociais (quando você optar por login social);</li>
+                    <li>Dados de bureaus de crédito e serviços de prevenção à fraude;</li>
+                    <li>Informações de parceiros comerciais e prestadores de serviço.</li>
+                </ul>
+
+                <h2>4. FINALIDADES DO TRATAMENTO DE DADOS</h2>
+                <p>Utilizamos seus dados pessoais para as seguintes finalidades:</p>
+
+                <h3>4.1. Execução do Contrato</h3>
+                <ul>
+                    <li>Criar e gerenciar sua conta na Plataforma;</li>
+                    <li>Conectar clientes a prestadores de serviço;</li>
+                    <li>Processar solicitações de serviço e facilitar a comunicação entre as partes;</li>
+                    <li>Processar pagamentos e transações financeiras;</li>
+                    <li>Emitir recibos, notas fiscais e comprovantes;</li>
+                    <li>Gerenciar agendamentos e confirmações de serviço;</li>
+                    <li>Permitir avaliações e feedback entre usuários;</li>
+                    <li>Fornecer suporte ao cliente e resolver disputas.</li>
+                </ul>
+
+                <h3>4.2. Legítimo Interesse</h3>
+                <ul>
+                    <li>Prevenir fraudes, abusos e atividades ilegais;</li>
+                    <li>Garantir a segurança da Plataforma e dos usuários;</li>
+                    <li>Realizar análises estatísticas e de comportamento para melhorar nossos serviços;</li>
+                    <li>Desenvolver novos produtos e funcionalidades;</li>
+                    <li>Personalizar a experiência do usuário;</li>
+                    <li>Realizar marketing direto de nossos próprios produtos e serviços;</li>
+                    <li>Proteger nossos direitos em processos judiciais ou administrativos.</li>
+                </ul>
+
+                <h3>4.3. Consentimento</h3>
+                <ul>
+                    <li>Enviar comunicações de marketing de terceiros (com opt-in);</li>
+                    <li>Utilizar localização precisa para serviços baseados em geolocalização;</li>
+                    <li>Processar dados pessoais sensíveis, quando aplicável;</li>
+                    <li>Compartilhar dados com parceiros para finalidades específicas informadas.</li>
+                </ul>
+
+                <h3>4.4. Cumprimento de Obrigação Legal</h3>
+                <ul>
+                    <li>Atender requisições de autoridades públicas e órgãos reguladores;</li>
+                    <li>Cumprir obrigações fiscais e tributárias;</li>
+                    <li>Responder a processos judiciais;</li>
+                    <li>Manter registros conforme exigido por lei.</li>
+                </ul>
+
+                <h2>5. COMPARTILHAMENTO DE DADOS</h2>
+                <p>Seus dados pessoais podem ser compartilhados nas seguintes situações:</p>
+
+                <h3>5.1. Entre Usuários da Plataforma</h3>
+                <p>Informações necessárias para a prestação do serviço são compartilhadas entre clientes e prestadores (nome, localização, contato, histórico de avaliações).</p>
+
+                <h3>5.2. Prestadores de Serviço</h3>
+                <p>Compartilhamos dados com empresas terceirizadas que nos auxiliam na operação da Plataforma:</p>
+                <ul>
+                    <li><strong>Processadores de Pagamento:</strong> Para processar transações financeiras;</li>
+                    <li><strong>Serviços de Cloud:</strong> Para armazenamento e hospedagem de dados;</li>
+                    <li><strong>Provedores de Email e SMS:</strong> Para envio de comunicações;</li>
+                    <li><strong>Ferramentas de Analytics:</strong> Para análise de uso da Plataforma;</li>
+                    <li><strong>Serviços de Verificação:</strong> Para validação de identidade e prevenção a fraudes;</li>
+                    <li><strong>Suporte ao Cliente:</strong> Para atendimento e resolução de problemas.</li>
+                </ul>
+                <p><strong>Importante:</strong> Todos os prestadores de serviço são cuidadosamente selecionados e devem cumprir obrigações contratuais de confidencialidade e proteção de dados conforme a LGPD.</p>
+
+                <h3>5.3. Autoridades e Órgãos Governamentais</h3>
+                <p>Podemos compartilhar dados quando:</p>
+                <ul>
+                    <li>Exigido por lei, ordem judicial ou intimação;</li>
+                    <li>Necessário para proteção de direitos, propriedade ou segurança da Linka, usuários ou público;</li>
+                    <li>Para cumprimento de obrigações legais, regulatórias ou fiscais;</li>
+                    <li>Para cooperar com investigações de autoridades competentes.</li>
+                </ul>
+
+                <h3>5.4. Operações Corporativas</h3>
+                <p>Em caso de fusão, aquisição, venda de ativos ou falência, seus dados poderão ser transferidos para a entidade sucessora, mantidas as mesmas proteções desta Política.</p>
+
+                <h3>5.5. Não Vendemos Seus Dados</h3>
+                <p><strong>A Linka NÃO vende, aluga ou comercializa seus dados pessoais a terceiros para fins de marketing.</strong></p>
+
+                <h2>6. SEGURANÇA DOS DADOS</h2>
+                <p>Implementamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais contra acesso não autorizado, perda, destruição, alteração, divulgação ou uso indevido:</p>
+
+                <h3>6.1. Medidas Técnicas</h3>
+                <ul>
+                    <li>Criptografia de dados em trânsito (SSL/TLS) e em repouso;</li>
+                    <li>Firewalls e sistemas de detecção de intrusão;</li>
+                    <li>Autenticação forte e controle de acesso baseado em função;</li>
+                    <li>Monitoramento contínuo de segurança;</li>
+                    <li>Backups regulares e plano de recuperação de desastres;</li>
+                    <li>Testes de segurança e análise de vulnerabilidades;</li>
+                    <li>Hashing irreversível de senhas.</li>
+                </ul>
+
+                <h3>6.2. Medidas Organizacionais</h3>
+                <ul>
+                    <li>Políticas internas de segurança da informação;</li>
+                    <li>Treinamento de colaboradores sobre proteção de dados;</li>
+                    <li>Contratos de confidencialidade com funcionários e parceiros;</li>
+                    <li>Acesso restrito a dados pessoais (need-to-know basis);</li>
+                    <li>Procedimentos de resposta a incidentes de segurança;</li>
+                    <li>Auditorias periódicas de segurança.</li>
+                </ul>
+
+                <h3>6.3. Limitações</h3>
+                <p>Embora implementemos as melhores práticas de segurança, nenhum sistema é 100% seguro. Não podemos garantir a segurança absoluta dos dados transmitidos pela Internet. Você também é responsável por manter a confidencialidade de suas credenciais de acesso.</p>
+
+                <h2>7. RETENÇÃO DE DADOS</h2>
+                <p>Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política, respeitando os prazos legais:</p>
+
+                <h3>7.1. Conta Ativa</h3>
+                <p>Enquanto sua conta estiver ativa, manteremos seus dados para fornecimento dos serviços.</p>
+
+                <h3>7.2. Após Encerramento da Conta</h3>
+                <ul>
+                    <li><strong>Dados de cadastro:</strong> 5 anos (prazo prescricional de ações contratuais);</li>
+                    <li><strong>Dados fiscais:</strong> 5 anos (conforme legislação tributária);</li>
+                    <li><strong>Logs de acesso:</strong> 6 meses (Marco Civil da Internet);</li>
+                    <li><strong>Comunicações eletrônicas:</strong> Conforme necessário para cumprimento de obrigações legais;</li>
+                    <li><strong>Dados anonimizados:</strong> Indefinidamente para fins estatísticos.</li>
+                </ul>
+
+                <h3>7.3. Eliminação de Dados</h3>
+                <p>Após os prazos de retenção, os dados são eliminados de forma segura e irreversível, salvo quando houver obrigação legal de manutenção ou legítimo interesse justificado.</p>
+
+                <h2>8. COOKIES E TECNOLOGIAS SIMILARES</h2>
+                
+                <h3>8.1. O que são Cookies</h3>
+                <p>Cookies são pequenos arquivos de texto armazenados no seu dispositivo quando você visita um site. Utilizamos cookies e tecnologias similares (web beacons, pixels, local storage) para melhorar sua experiência.</p>
+
+                <h3>8.2. Tipos de Cookies Utilizados</h3>
+                <ul>
+                    <li><strong>Cookies Estritamente Necessários:</strong> Essenciais para o funcionamento da Plataforma (autenticação, segurança, preferências);</li>
+                    <li><strong>Cookies de Desempenho:</strong> Coletam informações sobre como você usa o site para melhorias;</li>
+                    <li><strong>Cookies de Funcionalidade:</strong> Permitem lembrar suas escolhas e personalizar a experiência;</li>
+                    <li><strong>Cookies de Publicidade:</strong> Utilizados para exibir anúncios relevantes e medir eficácia de campanhas.</li>
+                </ul>
+
+                <h3>8.3. Gerenciamento de Cookies</h3>
+                <p>Você pode controlar e gerenciar cookies através das configurações do seu navegador. Note que a desativação de certos cookies pode afetar a funcionalidade da Plataforma.</p>
+
+                <h2>9. SEUS DIREITOS COMO TITULAR DE DADOS</h2>
+                <p>Conforme a LGPD, você possui os seguintes direitos em relação aos seus dados pessoais:</p>
+
+                <h3>9.1. Direito de Confirmação e Acesso</h3>
+                <p>Confirmar a existência de tratamento e acessar seus dados pessoais.</p>
+
+                <h3>9.2. Direito de Correção</h3>
+                <p>Corrigir dados incompletos, inexatos ou desatualizados.</p>
+
+                <h3>9.3. Direito de Anonimização, Bloqueio ou Eliminação</h3>
+                <p>Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade.</p>
+
+                <h3>9.4. Direito de Portabilidade</h3>
+                <p>Solicitar a portabilidade de seus dados a outro fornecedor de serviço ou produto.</p>
+
+                <h3>9.5. Direito de Informação</h3>
+                <p>Ser informado sobre entidades com as quais compartilhamos seus dados.</p>
+
+                <h3>9.6. Direito de Informação sobre Consentimento</h3>
+                <p>Ser informado sobre a possibilidade de não fornecer consentimento e as consequências da negativa.</p>
+
+                <h3>9.7. Direito de Revogação do Consentimento</h3>
+                <p>Revogar seu consentimento a qualquer momento.</p>
+
+                <h3>9.8. Direito de Oposição</h3>
+                <p>Opor-se ao tratamento realizado com base em legítimo interesse.</p>
+
+                <h3>9.9. Direito de Revisão de Decisões Automatizadas</h3>
+                <p>Solicitar revisão de decisões tomadas unicamente com base em tratamento automatizado.</p>
+
+                <h3>9.10. Como Exercer Seus Direitos</h3>
+                <p>Para exercer qualquer destes direitos, entre em contato através do e-mail: <strong>privacidade@linka.com.br</strong></p>
+                <p>Responderemos sua solicitação em até 15 (quinze) dias. Em alguns casos, podemos solicitar informações adicionais para confirmar sua identidade.</p>
+
+                <h2>10. TRANSFERÊNCIA INTERNACIONAL DE DADOS</h2>
+                <p>Seus dados pessoais são armazenados e processados principalmente em servidores localizados no Brasil. No entanto, alguns de nossos prestadores de serviço podem estar localizados em outros países.</p>
+                <p>Quando houver transferência internacional de dados, garantimos que:</p>
+                <ul>
+                    <li>O país de destino oferece grau de proteção adequado;</li>
+                    <li>Ou implementamos cláusulas contratuais padrão aprovadas;</li>
+                    <li>Ou obtemos seu consentimento específico;</li>
+                    <li>Ou existe outra base legal prevista na LGPD.</li>
+                </ul>
+
+                <h2>11. DADOS DE MENORES DE IDADE</h2>
+                <p><strong>A Plataforma Linka é destinada a maiores de 18 anos.</strong></p>
+                <p>Não coletamos intencionalmente dados de menores de idade sem o consentimento dos pais ou responsáveis legais. Se tomarmos conhecimento de que coletamos dados de menores sem autorização, tomaremos medidas para excluir essas informações imediatamente.</p>
+                <p>Caso identifique que um menor forneceu dados sem autorização, entre em contato conosco imediatamente.</p>
+
+                <h2>12. ALTERAÇÕES NESTA POLÍTICA</h2>
+                <p>Podemos atualizar esta Política periodicamente para refletir mudanças em nossas práticas, legislação ou por outros motivos operacionais, legais ou regulatórios.</p>
+                <p>Quando realizarmos alterações materiais, notificaremos você por:</p>
+                <ul>
+                    <li>Publicação de aviso destacado na Plataforma;</li>
+                    <li>Envio de e-mail para o endereço cadastrado;</li>
+                    <li>Notificação no aplicativo;</li>
+                    <li>Solicitação de novo consentimento, quando necessário.</li>
+                </ul>
+                <p>Recomendamos que você revise esta Política regularmente. O uso continuado da Plataforma após alterações constitui sua aceitação dos novos termos.</p>
+
+                <h2>13. ENCARREGADO DE PROTEÇÃO DE DADOS (DPO)</h2>
+                <p>Nomeamos um Encarregado de Proteção de Dados (Data Protection Officer - DPO) para atuar como canal de comunicação entre você, a Linka e a Autoridade Nacional de Proteção de Dados (ANPD).</p>
+                <p><strong>Contato do DPO:</strong></p>
+                <ul>
+                    <li>E-mail: <strong>dpo@linka.com.br</strong></li>
+                    <li>E-mail alternativo: <strong>privacidade@linka.com.br</strong></li>
+                </ul>
+
+                <h2>14. LEGISLAÇÃO APLICÁVEL E JURISDIÇÃO</h2>
+                <p>Esta Política é regida pelas leis da República Federativa do Brasil, especialmente pela Lei Geral de Proteção de Dados (Lei nº 13.709/2018), Marco Civil da Internet (Lei nº 12.965/2014) e Código de Defesa do Consumidor (Lei nº 8.078/1990).</p>
+                <p>Fica eleito o foro da comarca de sua residência para dirimir quaisquer controvérsias decorrentes desta Política.</p>
+
+                <h2>15. RECLAMAÇÕES À ANPD</h2>
+                <p>Sem prejuízo de qualquer recurso administrativo ou judicial, você tem o direito de apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD) caso considere que o tratamento de seus dados pessoais viola a LGPD.</p>
+                <p><strong>ANPD:</strong> <a href="https://www.gov.br/anpd" target="_blank">www.gov.br/anpd</a></p>
+
+                <h2>16. CONTATO</h2>
+                <p>Se você tiver dúvidas, comentários ou preocupações sobre esta Política de Privacidade ou sobre nossas práticas de tratamento de dados, entre em contato:</p>
+                <ul>
+                    <li><strong>E-mail Geral:</strong> contato@linka.com.br</li>
+                    <li><strong>E-mail de Privacidade:</strong> privacidade@linka.com.br</li>
+                    <li><strong>DPO:</strong> dpo@linka.com.br</li>
+                    <li><strong>Telefone:</strong> (53) 9.9943-7775</li>
+                    <li><strong>Endereço:</strong> Rio Grande, RS - Brasil</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>💡 Compromisso Linka:</strong> Estamos comprometidos com a proteção da sua privacidade e a transparência no tratamento dos seus dados. Sua confiança é fundamental para nós.</p>
+                </div>
+
+                <div class="last-update">
+                    <p><strong>Última atualização:</strong> 02 de fevereiro de 2026</p>
+                    <p><strong>Versão:</strong> 1.0</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <script src="/public/js/main.js"></script>
+</body>
+</html>

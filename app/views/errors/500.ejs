@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/images/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="error-page">
+    <%- include('../partials/header') %>
+    
+    <main>
+        <section class="error-section">
+            <div class="container">
+                <div class="error-content">
+                    <div class="error-illustration">
+                        <div class="error-number">500</div>
+                        <i data-lucide="alert-triangle" class="error-icon"></i>
+                    </div>
+                    
+                    <div class="error-text">
+                        <h1 class="error-title">Erro interno do servidor</h1>
+                        <p class="error-description">
+                            <%= message %>
+                        </p>
+                        <p class="error-suggestion">
+                            Ocorreu um erro inesperado. Nossa equipe foi notificada e está trabalhando para resolver o problema.
+                        </p>
+                        
+                        <div class="error-actions">
+                            <a href="/" class="btn btn-primary">
+                                <i data-lucide="home"></i>
+                                Voltar ao Início
+                            </a>
+                            <a href="javascript:location.reload()" class="btn btn-outline">
+                                <i data-lucide="refresh-cw"></i>
+                                Tentar Novamente
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="error-suggestions">
+                    <h3>Você pode tentar:</h3>
+                    <ul>
+                        <li>Recarregar a página em alguns minutos</li>
+                        <li><a href="/">Voltar à página inicial</a></li>
+                        <li><a href="/contato">Reportar o problema</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <%- include('../partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/public/js/main.js"></script>
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

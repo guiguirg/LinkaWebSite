@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/images/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="<%= page %>-page">
+    <%- include('partials/header') %>
+    
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Entre em Contato</h1>
+                <p class="page-description">Estamos aqui para ajudar você. Fale conosco!</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Info -->
+                    <div class="contact-info">
+                        <div class="contact-info-header">
+                            <h2 class="section-title">Fale Conosco</h2>
+                            <p class="section-description">
+                                Nossa equipe está pronta para responder suas dúvidas e ajudar você da melhor forma possível.
+                            </p>
+                        </div>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <i data-lucide="mail"></i>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">Email</h3>
+                                    <p class="contact-method-text">contato@linka.com.br</p>
+                                    <p class="contact-method-desc">Resposta em até 24 horas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <i data-lucide="phone"></i>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">Telefone</h3>
+                                    <p class="contact-method-text">(53) 99943-7775</p>
+                                    <p class="contact-method-desc">Seg - Sex, 9h às 18h</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <i data-lucide="map-pin"></i>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">Endereço</h3>
+                                    <p class="contact-method-text">Rio Grande, RS</p>
+                                    <p class="contact-method-desc">Brasil</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="contact-method-icon">
+                                    <i data-lucide="message-circle"></i>
+                                </div>
+                                <div class="contact-method-content">
+                                    <h3 class="contact-method-title">WhatsApp</h3>
+                                    <p class="contact-method-text">(53) 99943-7775</p>
+                                    <p class="contact-method-desc">Atendimento rápido</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-contact">
+                            <h3>Siga-nos nas redes sociais</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link" aria-label="Facebook">
+                                    <i data-lucide="facebook"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Instagram">
+                                    <i data-lucide="instagram"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="LinkedIn">
+                                    <i data-lucide="linkedin"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="Twitter">
+                                    <i data-lucide="twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <div class="contact-form-header">
+                            <h2 class="section-title">Envie sua Mensagem</h2>
+                            <p class="section-description">
+                                Preencha o formulário abaixo e entraremos em contato o mais breve possível.
+                            </p>
+                        </div>
+                        
+                        <% if (typeof success !== 'undefined' && success) { %>
+                            <div class="alert alert-success">
+                                <i data-lucide="check-circle"></i>
+                                <%= success %>
+                            </div>
+                        <% } %>
+                        
+                        <form class="contact-form" method="POST" action="/contato">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nome Completo</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Telefone</label>
+                                    <input type="tel" id="phone" name="phone" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Assunto</label>
+                                <select id="subject" name="subject" class="form-select" required>
+                                    <option value="">Selecione um assunto</option>
+                                    <option value="duvida-geral">Dúvida Geral</option>
+                                    <option value="suporte-tecnico">Suporte Técnico</option>
+                                    <option value="parceria">Parceria</option>
+                                    <option value="sugestao">Sugestão</option>
+                                    <option value="reclamacao">Reclamação</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">Mensagem</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="6" required placeholder="Descreva sua dúvida ou solicitação..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg btn-full">
+                                    <i data-lucide="send"></i>
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Perguntas Frequentes</h2>
+                    <p class="section-description">
+                        Respostas para as dúvidas mais comuns sobre o Linka
+                    </p>
+                </div>
+                
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-question">Como funciona o Linka?</h3>
+                        <p class="faq-answer">
+                            O Linka conecta você a profissionais qualificados. Você descreve o serviço que precisa, 
+                            recebe propostas de profissionais e escolhe o melhor para você.
+                        </p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3 class="faq-question">É seguro contratar pelo Linka?</h3>
+                        <p class="faq-answer">
+                            Sim! Todos os profissionais passam por verificação de identidade e histórico. 
+                            Além disso, temos sistema de avaliações e garantia de satisfação.
+                        </p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3 class="faq-question">Quanto custa usar o Linka?</h3>
+                        <p class="faq-answer">
+                            Para clientes, o cadastro e busca por profissionais é gratuito. Você só paga 
+                            diretamente ao profissional pelo serviço contratado.
+                        </p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3 class="faq-question">Como me tornar um profissional no Linka?</h3>
+                        <p class="faq-answer">
+                            Basta se cadastrar, enviar seus documentos para verificação e começar a receber 
+                            solicitações de serviços na sua área de atuação.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/public/js/main.js"></script>
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

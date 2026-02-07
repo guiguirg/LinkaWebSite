@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/images/logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="<%= page %>-page">
+    <%- include('partials/header') %>
+
+        <main>
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="speed-badge">
+                            <i data-lucide="zap"></i>
+                            <span>Solicitou Chegou</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Encontre profissionais <span class="highlight">em minutos</span>
+                        </h1>
+                        <p class="hero-description">
+                            <strong>Chamou, resolveu!</strong> Conecte-se instantaneamente com especialistas
+                            qualificados
+                            na sua região. Não perca tempo procurando - receba propostas rápidas e contrate agora.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="/cadastrar?tipo=cliente" class="btn btn-primary btn-lg">
+                                <i data-lucide="zap"></i>
+                                Encontrar agora
+                            </a>
+                            <a href="/cadastrar?tipo=profissional" class="btn btn-outline btn-lg">Sou profissional</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="/public/images/servicos.png" alt="Profissionais conectados" class="hero-img">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="services-showcase">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Serviço rápido para o que você precisa</h2>
+                        <p class="section-description">
+                            Profissionais disponíveis agora em 10 categorias. <strong>Respostas em minutos!</strong>
+                        </p>
+                    </div>
+
+                    <div class="services-showcase-grid">
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="zap"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Eletricista</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="droplet"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Encanador</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="sparkles"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Diarista</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="key"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Chaveiro</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="leaf"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Jardineiro</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="package"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Montador de Móveis</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="wind"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Instalador de Ar</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="truck"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Fretes</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="stethoscope"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Veterinário</h3>
+                        </div>
+
+                        <div class="service-showcase-card">
+                            <div class="service-showcase-icon">
+                                <i data-lucide="smartphone"></i>
+                            </div>
+                            <h3 class="service-showcase-title">Conserto de Celular</h3>
+                        </div>
+                    </div>
+
+                    <div class="section-footer">
+                        <a href="/servicos" class="btn btn-primary btn-lg">Ver todos os profissionais disponíveis</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust & Team Section -->
+            <section class="trust-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Atendimento rápido e confiável</h2>
+                        <p class="section-description">
+                            Nossa equipe garante que você tenha respostas em minutos, não em dias
+                        </p>
+                    </div>
+
+                    <div class="team-showcase">
+                        <div class="team-member-card">
+                            <div class="member-photo-wrapper">
+                                <img src="/public/images/junior.jpg" alt="Junior Gonçalves" class="member-photo">
+                            </div>
+                            <h3 class="member-name">Junior Gonçalves</h3>
+                            <p class="member-role">Sócio Proprietário</p>
+                        </div>
+
+                        <div class="team-member-card">
+                            <div class="member-photo-wrapper">
+                                <img src="/public/images/guilherme.jpg" alt="Guilherme da França Rodrigues"
+                                    class="member-photo">
+                            </div>
+                            <h3 class="member-name">Guilherme da França Rodrigues</h3>
+                            <p class="member-role">Sócio Proprietário</p>
+                        </div>
+
+                        <div class="team-member-card">
+                            <div class="member-photo-wrapper">
+                                <img src="/public/images/pedro.jpg" alt="Pedro Padilha" class="member-photo">
+                            </div>
+                            <h3 class="member-name">Pedro Padilha</h3>
+                            <p class="member-role">Sócio Proprietário</p>
+                        </div>
+                    </div>
+
+                    <div class="trust-badges">
+                        <div class="badge-item">
+                            <div class="badge-icon">
+                                <i data-lucide="file-text"></i>
+                            </div>
+                            <span class="badge-text">CNPJ Regularizado</span>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon">
+                                <i data-lucide="file-check"></i>
+                            </div>
+                            <span class="badge-text">Alvará Ativo</span>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon">
+                                <i data-lucide="shield-check"></i>
+                            </div>
+                            <span class="badge-text">Plataforma Verificada</span>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon">
+                                <i data-lucide="lock"></i>
+                            </div>
+                            <span class="badge-text">Pagamentos Seguros</span>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon">
+                                <i data-lucide="award"></i>
+                            </div>
+                            <span class="badge-text">Profissionais Certificados</span>
+                        </div>
+
+                        <div class="badge-item">
+                            <div class="badge-icon">
+                                <i data-lucide="headphones"></i>
+                            </div>
+                            <span class="badge-text">Suporte 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- App Download Section -->
+            <section class="app-download">
+                <div class="app-download-bg">
+                    <div class="app-download-gradient"></div>
+                    <div class="app-download-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="app-section-header">
+                        <h2 class="app-section-title">Acesse o Aplicativo</h2>
+                        <p class="app-section-subtitle">Gerencie tudo direto do seu celular</p>
+                    </div>
+
+                    <div class="app-download-content">
+                        <!-- Textos à esquerda -->
+                        <div class="app-info-side">
+                            <div class="app-header-info">
+                                <div class="app-icon-large">
+                                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="80" height="80" rx="20" fill="url(#appGradient)" />
+                                        <path
+                                            d="M40 25C31.71 25 25 31.71 25 40C25 48.29 31.71 55 40 55C48.29 55 55 48.29 55 40C55 31.71 48.29 25 40 25ZM40 52.5C33.1 52.5 27.5 46.9 27.5 40C27.5 33.1 33.1 27.5 40 27.5C46.9 27.5 52.5 33.1 52.5 40C52.5 46.9 46.9 52.5 40 52.5Z"
+                                            fill="white" />
+                                        <circle cx="40" cy="40" r="6" fill="white" />
+                                        <defs>
+                                            <linearGradient id="appGradient" x1="0" y1="0" x2="80" y2="80">
+                                                <stop offset="0%" stop-color="#667eea" />
+                                                <stop offset="100%" stop-color="#764ba2" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="app-text-main">
+                                    <h3 class="app-name">Linka App</h3>
+                                    <p class="app-tagline">Encontre profissionais, gerencie seus serviços e receba
+                                        notificações em tempo real.</p>
+                                </div>
+                            </div>
+
+                            <div class="app-features-list">
+                                <div class="app-feature-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Acesso rápido e prático</span>
+                                </div>
+                                <div class="app-feature-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Notificações em tempo real</span>
+                                </div>
+                                <div class="app-feature-item">
+                                    <i data-lucide="check-circle"></i>
+                                    <span>Gerencie tudo em um só lugar</span>
+                                </div>
+                            </div>
+
+                            <a href="https://applinka.com.br" target="_blank" class="btn-app-access">
+                                <i data-lucide="smartphone"></i>
+                                <div class="btn-content">
+                                    <span class="btn-label">Acessar Agora</span>
+                                    <span class="btn-url">applinka.com.br</span>
+                                </div>
+                                <i data-lucide="arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- QR Code à direita -->
+                        <div class="app-qrcode-side">
+                            <div class="qrcode-container">
+                                <div class="qrcode-label">Escaneie para acessar</div>
+                                <div class="qrcode-wrapper" style="pointer-events: none; user-select: none;">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=https://applinka.com.br&bgcolor=ffffff&color=667eea&margin=0&format=svg"
+                                        alt="QR Code Linka" class="qrcode-image" draggable="false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta">
+                <div class="container">
+                    <div class="cta-content">
+                        <h2 class="cta-title">Seja cliente ou profissional</h2>
+                        <p class="cta-description">
+                            Encontre os melhores profissionais da sua região ou cresça seu negócio
+                            recebendo mais pedidos. Cadastro gratuito e resultados imediatos.
+                        </p>
+                        <div class="cta-actions">
+                            <a href="/cadastrar?tipo=profissional" class="btn btn-primary btn-lg">Quero oferecer
+                                serviços</a>
+                            <a href="/cadastrar?tipo=cliente" class="btn btn-outline btn-lg">Quero contratar</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <%- include('partials/footer') %>
+
+            <!-- JavaScript -->
+            <script src="/public/js/main.js"></script>
+            <!-- Lucide Icons Script -->
+            <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+            <script>
+                lucide.createIcons();
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+
+  <link rel="stylesheet" href="/public/css/main.css">
+  <link rel="stylesheet" href="/public/css/components.css">
+  <link rel="stylesheet" href="/public/css/auth.css">
+
+  <style>
+    /* =======================
+       DESIGN NOVO (SEM MEXER NA LÓGICA)
+       ======================= */
+
+    :root{
+      --bg0:#070A12;
+      --bg1:#0B1020;
+      --card:#0f172a;
+      --card2: rgba(255,255,255,0.92);
+      --stroke: rgba(148,163,184,0.25);
+
+      --text:#0f172a;
+      --textInv:#e2e8f0;
+      --muted:#64748b;
+
+      --brand:#2563eb;
+      --brand2:#06b6d4;
+      --accent:#ff6b35;
+
+      --success:#10b981;
+
+      --shadow: 0 20px 70px rgba(2,6,23,.25);
+      --shadow2: 0 12px 32px rgba(2,6,23,.18);
+
+      --r16: 16px;
+      --r20: 20px;
+      --r24: 24px;
+      --r28: 28px;
+
+      --ring: 0 0 0 4px rgba(37,99,235,.16);
+    }
+
+    /* fundo premium */
+    body{
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(37,99,235,.20), transparent 55%),
+        radial-gradient(900px 500px at 85% 20%, rgba(6,182,212,.18), transparent 55%),
+        radial-gradient(900px 600px at 60% 95%, rgba(255,107,53,.12), transparent 60%),
+        linear-gradient(180deg, #f8fafc 0%, #f1f5f9 60%, #eef2ff 100%);
+    }
+
+    /* garante espaçamento e centralização mesmo se teu main.css não fizer */
+    .auth-section{
+      padding: 36px 0 64px;
+    }
+    .container{
+      position: relative;
+    }
+
+    /* =======================
+       SELEÇÃO
+       ======================= */
+    .selection{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 16px 24px;
+    }
+
+    .selection-header{
+      text-align: center;
+      margin-bottom: 28px;
+      animation: fadeInUp .55s ease-out;
+    }
+
+    .selection-title{
+      font-size: clamp(1.9rem, 3.4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.08;
+      color: #0f172a;
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    /* título com “highlight” decente (sem aquele retângulo gritando) */
+    .selection-title{
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 16px;
+      background:
+        linear-gradient(90deg, rgba(37,99,235,.12), rgba(6,182,212,.10), rgba(255,107,53,.10));
+      border: 1px solid rgba(15, 23, 42, .08);
+      box-shadow: 0 10px 30px rgba(2,6,23,.06);
+    }
+
+    .selection-subtitle{
+      margin: 14px auto 0;
+      max-width: 620px;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .cards{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+      align-items: stretch;
+    }
+
+    .card{
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(15,23,42,.10);
+      border-radius: 26px;
+      padding: 26px 22px 22px;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 55px rgba(2,6,23,.08);
+      animation: fadeInUp .55s ease-out backwards;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:nth-child(1){ animation-delay: .08s; }
+    .card:nth-child(2){ animation-delay: .16s; }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-120px -120px auto auto;
+      width: 260px;
+      height: 260px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(37,99,235,.22), transparent 60%),
+        radial-gradient(circle at 70% 70%, rgba(6,182,212,.18), transparent 60%);
+      filter: blur(0px);
+      opacity: .9;
+      pointer-events:none;
+      transform: rotate(18deg);
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(37,99,235,.06), rgba(6,182,212,.05), rgba(255,107,53,.04));
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events:none;
+    }
+
+    .card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(37,99,235,.35);
+      box-shadow: 0 28px 85px rgba(2,6,23,.16);
+      background: rgba(255,255,255,0.96);
+    }
+    .card:hover::after{ opacity: 1; }
+
+    .promo-badge{
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: white;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+      z-index: 2;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+      }
+      50% {
+        box-shadow: 0 12px 40px rgba(139, 92, 246, 0.6);
+      }
+    }
+
+    .card-icon{
+      width: 78px;
+      height: 78px;
+      margin: 56px auto 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #ff6b35 0%, #ff8c61 100%);
+      box-shadow: 0 12px 30px rgba(255,107,53,.25);
+      position: relative;
+      z-index: 1;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card-icon svg{
+      width: 38px;
+      height: 38px;
+      color: white;
+    }
+    .card:hover .card-icon{
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 16px 42px rgba(255,107,53,.30);
+    }
+
+    .card-content{
+      position: relative;
+      z-index: 1;
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .card h3{
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #0f172a;
+      text-align:center;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .card p{
+      font-size: 1.02rem;
+      color: #475569;
+      text-align:center;
+      margin: 0 0 6px;
+      line-height: 1.55;
+    }
+
+    .promo-offer{
+      margin: 14px auto 6px;
+      width: 100%;
+      max-width: 360px;
+      background: linear-gradient(135deg, rgba(139, 92, 246, .10), rgba(168, 85, 247, .08));
+      border: 1px solid rgba(139, 92, 246, .35);
+      border-radius: 18px;
+      padding: 14px 14px;
+      text-align:center;
+    }
+
+    .promo-offer-title{
+      font-size: .78rem;
+      font-weight: 900;
+      color: #7c3aed;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+
+    .promo-offer-text{
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #8b5cf6;
+      margin: 0;
+    }
+
+    /* botão: mantém tuas classes, mas força um visual premium */
+    .card .btn{
+      margin-top: auto;
+      width: 100%;
+      border-radius: 16px;
+      padding: 14px 18px;
+      font-weight: 900;
+      font-size: 1.02rem;
+      letter-spacing: .02em;
+      border: 1px solid rgba(37,99,235,.25);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    }
+    .btn-primary{
+      background: linear-gradient(135deg, rgba(37,99,235,1) 0%, rgba(6,182,212,1) 100%);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 12px 30px rgba(37,99,235,.22);
+    }
+    .btn-outline{
+      background: transparent;
+      color: #0f172a;
+      border-color: rgba(15,23,42,.18);
+    }
+    .card:hover .btn-primary{
+      transform: translateY(-1px);
+      box-shadow: 0 16px 38px rgba(37,99,235,.28);
+    }
+    .card:hover .btn-outline{
+      background: rgba(37,99,235,.10);
+      border-color: rgba(37,99,235,.30);
+      transform: translateY(-1px);
+    }
+
+    /* =======================
+       FORM BOX / FORMULÁRIO
+       ======================= */
+    .form-box{
+      display:none;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 22px 16px 0;
+    }
+    .form-box.active{
+      display:block;
+      animation: fadeInUp .45s ease-out;
+    }
+
+    .form-container{
+      background: rgba(255,255,255,0.94);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 24px 90px rgba(2,6,23,.12);
+      border: 1px solid rgba(15,23,42,.10);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .form-container::before{
+      content:"";
+      position:absolute;
+      left:0; right:0; top:0;
+      height: 6px;
+      background: linear-gradient(90deg, #2563eb 0%, #06b6d4 50%, #ff6b35 100%);
+    }
+
+    .back-button{
+      background: transparent;
+      border: 1px solid rgba(15,23,42,.10);
+      cursor: pointer;
+      color: #0f172a;
+      font-size: .95rem;
+      font-weight: 900;
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .back-button:hover{
+      background: rgba(37,99,235,.08);
+      border-color: rgba(37,99,235,.22);
+      transform: translateY(-1px);
+    }
+
+    .form-header{
+      text-align:center;
+      margin: 18px 0 18px;
+    }
+    .form-header h1{
+      font-size: clamp(1.55rem, 3.4vw, 2.05rem);
+      font-weight: 1000;
+      margin: 0 0 8px;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 60%, #ff6b35 120%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .form-header p{
+      margin: 0;
+      color: #475569;
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .form-promo{
+      background: linear-gradient(135deg, rgba(16,185,129,.10), rgba(5,150,105,.06));
+      border: 1px solid rgba(16,185,129,.40);
+      border-radius: 18px;
+      padding: 14px 14px;
+      margin: 14px 0 18px;
+      text-align:center;
+    }
+    .form-promo-text{
+      font-size: .95rem;
+      color: #065f46;
+      font-weight: 800;
+      margin: 0;
+    }
+    .form-promo-text strong{
+      font-weight: 1000;
+      color: #047857;
+    }
+
+    .form-group{
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .form-group label{
+      display:block;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 8px;
+      font-size: .92rem;
+      letter-spacing: .01em;
+    }
+    .form-group label .required{
+      color:#ef4444;
+      margin-left: 2px;
+    }
+
+    .input-wrapper{
+      position: relative;
+    }
+
+    /* ícone fica antes, então não dá pra usar + no focus; vamos mudar pelo :focus-within */
+    .input-icon{
+      position:absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+      pointer-events:none;
+      transition: color .2s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .input-icon svg{
+      width: 20px;
+      height: 20px;
+    }
+    .input-wrapper:focus-within .input-icon{
+      color: var(--brand);
+    }
+
+    .form-input,
+    .form-select{
+      width: 100%;
+      padding: 14px 14px 14px 44px;
+      border: 1.5px solid rgba(15,23,42,.14);
+      border-radius: 16px;
+      font-size: 1rem;
+      color: #0f172a;
+      background: rgba(255,255,255,0.90);
+      transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease, background .2s ease;
+      box-sizing: border-box;
+    }
+    .form-input::placeholder{
+      color:#94a3b8;
+    }
+    .form-input:focus,
+    .form-select:focus{
+      outline: none;
+      border-color: rgba(37,99,235,.55);
+      box-shadow: var(--ring);
+      background: white;
+      transform: translateY(-1px);
+    }
+
+    .form-select{
+      cursor:pointer;
+      appearance:none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position: right 14px center;
+      padding-right: 44px;
+    }
+    .form-select:focus{
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+
+    .checkbox-wrapper{
+      display:flex;
+      align-items:flex-start;
+      gap: 12px;
+      padding: 14px 14px;
+      background: rgba(37,99,235,.05);
+      border: 1px solid rgba(37,99,235,.14);
+      border-radius: 16px;
+      margin: 16px 0 16px;
+      cursor:pointer;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .checkbox-wrapper:hover{
+      background: rgba(37,99,235,.08);
+      border-color: rgba(37,99,235,.22);
+      transform: translateY(-1px);
+    }
+    .checkbox-wrapper input[type="checkbox"]{
+      width: 22px;
+      height: 22px;
+      cursor:pointer;
+      accent-color: var(--brand);
+      margin: 2px 0 0;
+      flex-shrink: 0;
+    }
+    .checkbox-wrapper label{
+      margin:0;
+      color:#0f172a;
+      font-size: .92rem;
+      font-weight: 800;
+      line-height: 1.5;
+      cursor:pointer;
+    }
+    .checkbox-wrapper label a{
+      color: var(--brand);
+      text-decoration:none;
+      font-weight: 1000;
+    }
+    .checkbox-wrapper label a:hover{
+      text-decoration: underline;
+    }
+
+    .submit-button{
+      width: 100%;
+      padding: 14px 18px;
+      background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.02rem;
+      font-weight: 1000;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+      box-shadow: 0 14px 34px rgba(37,99,235,.25);
+      letter-spacing: .02em;
+    }
+    .submit-button:hover:not(:disabled){
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(37,99,235,.30);
+      filter: saturate(1.05);
+    }
+    .submit-button:active:not(:disabled){
+      transform: translateY(0);
+    }
+    .submit-button:disabled{
+      opacity: .75;
+      cursor:not-allowed;
+    }
+
+    .form-footer{
+      text-align:center;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(15,23,42,.10);
+    }
+    .form-footer p{
+      color:#475569;
+      font-size: .92rem;
+      margin:0;
+      font-weight: 700;
+    }
+    .form-footer a{
+      color: var(--brand);
+      text-decoration:none;
+      font-weight: 1000;
+    }
+    .form-footer a:hover{
+      text-decoration: underline;
+    }
+
+    /* =======================
+       RESPONSIVO
+       ======================= */
+    @media (max-width: 900px){
+      .cards{ grid-template-columns: 1fr; }
+      .card{ min-height: unset; }
+      .card-icon{ margin-top: 54px; }
+    }
+
+    @media (max-width: 520px){
+      .auth-section{ padding: 22px 0 48px; }
+      .selection{ padding: 22px 12px 8px; }
+      .selection-title{ padding: 10px 12px; border-radius: 14px; }
+      .promo-badge{ left: 12px; right: 12px; top: 12px; padding: 9px 10px; font-size: .78rem; }
+      .card{ padding: 22px 16px 16px; border-radius: 22px; }
+      .card-icon{ width: 72px; height: 72px; border-radius: 20px; }
+      .form-container{ padding: 18px; border-radius: 22px; }
+      .back-button{ width: 100%; justify-content: center; }
+      .form-input, .form-select{ font-size: 16px; } /* evita zoom no iOS */
+    }
+
+    /* =======================
+       ANIMAÇÕES
+       ======================= */
+    @keyframes fadeInUp{
+      from{ opacity: 0; transform: translateY(18px); }
+      to{ opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin{
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+
+  <main>
+    <section class="auth-section">
+      <div class="container">
+
+        <!-- SELEÇÃO -->
+        <div id="sel" class="selection">
+          <div class="selection-header">
+            <h1 class="selection-title">Como você quer usar o Linka?</h1>
+            <p class="selection-subtitle">Escolha o perfil que melhor se encaixa com você</p>
+          </div>
+
+          <div class="cards">
+
+            <!-- PRESTADOR -->
+            <div class="card" onclick="show('p')">
+              <div class="promo-badge">🚀 Oferta de Pré-Lançamento</div>
+
+              <div class="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              </div>
+
+              <div class="card-content">
+                <h3>Sou Prestador</h3>
+                <p>Oferecer serviços</p>
+
+                <div class="promo-offer">
+                  <div class="promo-offer-title">Bônus Especial</div>
+                  <p class="promo-offer-text">+10% no 1º serviço</p>
+                </div>
+
+                <button class="btn btn-primary btn-full" type="button">Continuar</button>
+              </div>
+            </div>
+
+            <!-- CLIENTE -->
+            <div class="card" onclick="show('c')">
+              <div class="promo-badge">🚀 Oferta de Pré-Lançamento</div>
+
+              <div class="card-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+
+              <div class="card-content">
+                <h3>Sou Cliente</h3>
+                <p>Contratar serviços</p>
+
+                <div class="promo-offer">
+                  <div class="promo-offer-title">Desconto Especial</div>
+                  <p class="promo-offer-text">10% OFF no 1º serviço</p>
+                </div>
+
+                <button class="btn btn-outline btn-full" type="button">Continuar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- FORM PRESTADOR -->
+        <div id="fp" class="form-box">
+          <div class="form-container">
+            <button onclick="back()" class="back-button" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+              Voltar
+            </button>
+
+            <div class="form-header">
+              <h1>Cadastro Prestador</h1>
+              <p>Comece a oferecer seus serviços hoje mesmo</p>
+            </div>
+
+            <div class="form-promo">
+              <p class="form-promo-text">🎉 <strong>Bônus Especial:</strong> Ganhe +10% no seu primeiro serviço!</p>
+            </div>
+
+            <form onsubmit="send(event,'prestador')">
+              <div class="form-group">
+                <label for="pn">Nome Completo <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </span>
+                  <input type="text" id="pn" class="form-input" placeholder="Digite seu nome completo" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="pe">E-mail <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"/>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  </span>
+                  <input type="email" id="pe" class="form-input" placeholder="seu@email.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="pp">Telefone <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                  </span>
+                  <input type="tel" id="pp" class="form-input" placeholder="(00) 00000-0000" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="pc">Categoria de Serviço <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </span>
+                  <select id="pc" class="form-select" required>
+                    <option value="">Selecione uma categoria</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="encanador">Encanador</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="diarista">Diarista</option>
+                    <option value="chaveiro">Chaveiro</option>
+                    <option value="jardineiro">Jardineiro</option>
+                    <option value="montador">Montador de Móveis</option>
+                    <option value="marceneiro">Marceneiro</option>
+                    <option value="dedetizador">Dedetizador</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="ps">Senha <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input type="password" id="ps" class="form-input" placeholder="Mínimo 6 caracteres" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="psc">Confirmar Senha <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input type="password" id="psc" class="form-input" placeholder="Digite a senha novamente" required>
+                </div>
+              </div>
+
+              <div class="checkbox-wrapper">
+                <input type="checkbox" id="pt" required>
+                <label for="pt">Aceito os <a href="/termos" target="_blank">Termos de Uso</a> e a <a href="/privacidade" target="_blank">Política de Privacidade</a></label>
+              </div>
+
+              <button type="submit" class="submit-button">Cadastrar</button>
+
+              <div class="form-footer">
+                <p>Já tem uma conta? <a href="/login">Faça login</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- FORM CLIENTE -->
+        <div id="fc" class="form-box">
+          <div class="form-container">
+            <button onclick="back()" class="back-button" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"/>
+              </svg>
+              Voltar
+            </button>
+
+            <div class="form-header">
+              <h1>Cadastro Cliente</h1>
+              <p>Encontre os melhores profissionais para seus projetos</p>
+            </div>
+
+            <div class="form-promo">
+              <p class="form-promo-text">🎉 <strong>Desconto Especial:</strong> 10% OFF no seu primeiro serviço!</p>
+            </div>
+
+            <form onsubmit="send(event,'cliente')">
+              <div class="form-group">
+                <label for="cn">Nome Completo <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </span>
+                  <input type="text" id="cn" class="form-input" placeholder="Digite seu nome completo" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="ce">E-mail <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"/>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  </span>
+                  <input type="email" id="ce" class="form-input" placeholder="seu@email.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cp">Telefone <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                  </span>
+                  <input type="tel" id="cp" class="form-input" placeholder="(00) 00000-0000" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="cs">Senha <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input type="password" id="cs" class="form-input" placeholder="Mínimo 6 caracteres" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="csc">Confirmar Senha <span class="required">*</span></label>
+                <div class="input-wrapper">
+                  <span class="input-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input type="password" id="csc" class="form-input" placeholder="Digite a senha novamente" required>
+                </div>
+              </div>
+
+              <div class="checkbox-wrapper">
+                <input type="checkbox" id="ct" required>
+                <label for="ct">Aceito os <a href="/termos" target="_blank">Termos de Uso</a> e a <a href="/privacidade" target="_blank">Política de Privacidade</a></label>
+              </div>
+
+              <button type="submit" class="submit-button">Cadastrar</button>
+
+              <div class="form-footer">
+                <p>Já tem uma conta? <a href="/login">Faça login</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
+
+  <script>
+    function show(t){
+      document.getElementById('sel').style.display='none';
+      document.getElementById(t=='p'?'fp':'fc').classList.add('active');
+    }
+
+    function back(){
+      document.getElementById('sel').style.display='block';
+      document.getElementById('fp').classList.remove('active');
+      document.getElementById('fc').classList.remove('active');
+    }
+
+    async function send(e,t){
+      e.preventDefault();
+      const b=e.target.querySelector('button[type="submit"]');
+      const originalText=b.textContent;
+      b.disabled=true;
+      b.innerHTML='<svg style="animation: spin 1s linear infinite; display: inline-block; margin-right: 8px;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity="0.25"/><path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"/></svg>Aguarde...';
+
+      try{
+        let d={userType:t};
+        if(t=='prestador'){
+          d.name=document.getElementById('pn').value;
+          d.email=document.getElementById('pe').value;
+          d.phone=document.getElementById('pp').value;
+          d.category=document.getElementById('pc').value;
+          d.password=document.getElementById('ps').value;
+          d.password_confirm=document.getElementById('psc').value;
+          d.terms=document.getElementById('pt').checked;
+        }else{
+          d.name=document.getElementById('cn').value;
+          d.email=document.getElementById('ce').value;
+          d.phone=document.getElementById('cp').value;
+          d.password=document.getElementById('cs').value;
+          d.password_confirm=document.getElementById('csc').value;
+          d.terms=document.getElementById('ct').checked;
+        }
+
+        if(d.password!=d.password_confirm){
+          alert('Senhas diferentes!');
+          b.disabled=false;
+          b.textContent=originalText;
+          return;
+        }
+
+        const r=await fetch('/cadastrar',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(d)
+        });
+
+        const j=await r.json();
+        if(j.success){
+          alert(j.mensagem);
+          window.location.href=j.redirect;
+        }else{
+          alert('Erro: '+j.mensagem);
+          b.disabled=false;
+          b.textContent=originalText;
+        }
+      }catch(err){
+        alert('Erro: '+err.message);
+        b.disabled=false;
+        b.textContent=originalText;
+      }
+    }
+  </script>
+
+</body>
+</html>

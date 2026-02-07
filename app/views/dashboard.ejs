@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/images/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    <link rel="stylesheet" href="/public/css/dashboard.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+<body class="<%= page %>-page">
+    <%- include('partials/header') %>
+    
+    <main>
+        <!-- Dashboard Header -->
+        <section class="dashboard-header">
+            <div class="container">
+                <div class="dashboard-title-section">
+                    <div>
+                        <h1 class="dashboard-title">Dashboard Linka</h1>
+                        <p class="dashboard-subtitle">Métricas e estatísticas em tempo real</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <span style="color: #64748b; font-size: 0.9rem;">
+                            👤 Administrador
+                        </span>
+                        <a href="/admin/sair" class="btn-logout" onclick="return confirm('Deseja realmente sair?')">
+                            🚪 Sair
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="dashboard-controls">
+                    <div class="time-filter">
+                        <button class="time-btn active" data-period="hour">Última Hora</button>
+                        <button class="time-btn" data-period="day">Hoje</button>
+                        <button class="time-btn" data-period="week">Esta Semana</button>
+                        <button class="time-btn" data-period="month">Este Mês</button>
+                    </div>
+                    
+                    <div class="refresh-controls">
+                        <button class="refresh-btn" id="refreshData">
+                            <i data-lucide="refresh-cw"></i>
+                            Atualizar
+                        </button>
+                        <div class="auto-refresh">
+                            <input type="checkbox" id="autoRefresh" checked>
+                            <label for="autoRefresh">Auto-refresh</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Métricas Principais -->
+        <section class="main-metrics">
+            <div class="container">
+                <h2 class="section-title">📊 Métricas do Sistema</h2>
+                <div class="metrics-grid">
+                    <!-- Visitantes Únicos (NOVO) -->
+                    <div class="metric-card visitors">
+                        <div class="metric-icon">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number"><%= analytics.uniqueVisitors.toLocaleString('pt-BR') %></div>
+                            <div class="metric-label">Visitantes Únicos (IPs)</div>
+                            <div class="metric-trend positive">
+                                <span class="trend-icon">↑</span>
+                                <span class="trend-value">Hoje: <%= analytics.visitsToday %></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total de Pageviews (NOVO) -->
+                    <div class="metric-card pageviews">
+                        <div class="metric-icon">
+                            <i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number"><%= analytics.totalPageViews.toLocaleString('pt-BR') %></div>
+                            <div class="metric-label">Total de Acessos</div>
+                            <div class="metric-trend">
+                                <span class="trend-icon">📈</span>
+                                <span class="trend-value">Ontem: <%= analytics.visitsYesterday %></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card users">
+                        <div class="metric-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number"><%= data.totalUsers.toLocaleString('pt-BR') %></div>
+                            <div class="metric-label">Total de Usuários</div>
+                            <div class="metric-sublabel">
+                                <%= data.totalClientes %> Clientes · <%= data.totalProfissionais %> Profissionais
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card active-users">
+                        <div class="metric-icon">
+                            <i data-lucide="user-check"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number"><%= data.activeUsers.toLocaleString('pt-BR') %></div>
+                            <div class="metric-label">Usuários Ativos/Disponíveis</div>
+                            <div class="metric-sublabel">
+                                <%= data.totalUsers > 0 ? ((data.activeUsers / data.totalUsers) * 100).toFixed(1) : 0 %>% do total
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card transactions">
+                        <div class="metric-icon">
+                            <i data-lucide="briefcase"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number"><%= data.totalProfissionais.toLocaleString('pt-BR') %></div>
+                            <div class="metric-label">Prestadores Cadastrados</div>
+                            <div class="metric-sublabel">
+                                <%= data.profissionaisPorTipo.length %> tipos diferentes
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card revenue">
+                        <div class="metric-icon">
+                            <i data-lucide="user-plus"></i>
+                        </div>
+                        <div class="metric-content">
+                            <div class="metric-number"><%= data.totalClientes.toLocaleString('pt-BR') %></div>
+                            <div class="metric-label">Clientes Cadastrados</div>
+                            <div class="metric-sublabel">
+                                Buscando serviços
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profissionais por Tipo -->
+        <% if (data.profissionaisPorTipo && data.profissionaisPorTipo.length > 0) { %>
+        <section class="stats-section">
+            <div class="container">
+                <h2 class="section-title">Profissionais por Categoria</h2>
+                <div class="stats-grid">
+                    <% data.profissionaisPorTipo.forEach(tipo => { %>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <div class="stat-name"><%= tipo.name %></div>
+                            <div class="stat-count"><%= tipo.count %> profissionais</div>
+                        </div>
+                        <div class="stat-percentage"><%= tipo.percentage %>%</div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- Usuários Recentes -->
+        <% if (data.recentUsers && data.recentUsers.length > 0) { %>
+        <section class="stats-section">
+            <div class="container">
+                <h2 class="section-title">Cadastros Recentes</h2>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Data de Cadastro</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.recentUsers.forEach(user => { %>
+                            <tr>
+                                <td><%= user.nome %></td>
+                                <td><span class="badge <%= user.tipo === 'Profissional' ? 'badge-blue' : 'badge-green' %>"><%= user.tipo %></span></td>
+                                <td><%= new Date(user.criado_em).toLocaleString('pt-BR') %></td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <% } %>
+    </main>
+    
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script>
+        // Dados do servidor para JavaScript
+        window.dashboardData = <%- JSON.stringify(data) %>;
+        
+        // Auto-refresh simples
+        const autoRefresh = document.getElementById('autoRefresh');
+        const refreshBtn = document.getElementById('refreshData');
+        
+        let refreshInterval;
+        
+        if (autoRefresh) {
+            autoRefresh.addEventListener('change', (e) => {
+                if (e.target.checked) {
+                    refreshInterval = setInterval(() => {
+                        location.reload();
+                    }, 30000); // Atualiza a cada 30 segundos
+                } else {
+                    clearInterval(refreshInterval);
+                }
+            });
+            
+            // Iniciar auto-refresh se estiver marcado
+            if (autoRefresh.checked) {
+                refreshInterval = setInterval(() => {
+                    location.reload();
+                }, 30000);
+            }
+        }
+        
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                location.reload();
+            });
+        }
+    </script>
+    <script src="/public/js/main.js"></script>
+    
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+    
+    <style>
+        .stats-section {
+            padding: 2rem 0;
+            background: #f8fafc;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .stat-info {
+            flex: 1;
+        }
+        
+        .stat-name {
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-count {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .stat-percentage {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #0066FF;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table thead {
+            background: #f1f5f9;
+        }
+        
+        .data-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .data-table td {
+            padding: 1rem;
+            border-top: 1px solid #e2e8f0;
+            color: #334155;
+        }
+        
+        .data-table tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .badge-blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .badge-green {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .metric-sublabel {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+    </style>
+</body>
+</html>

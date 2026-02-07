@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/images/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="<%= page %>-page">
+    <%- include('partials/header') %>
+    
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Nossos Serviços</h1>
+                <p class="page-description">Descubra todas as categorias de serviços disponíveis na nossa plataforma</p>
+            </div>
+        </section>
+
+        <!-- Services Grid -->
+        <section class="services-detailed">
+            <div class="container">
+                <div class="services-grid-detailed">
+                    <% services.forEach(function(service) { %>
+                    <div class="service-card-detailed">
+                        <div class="service-header">
+                            <div class="service-icon-large">
+                                <i data-lucide="<%= service.icon %>"></i>
+                            </div>
+                            <h3 class="service-title-large"><%= service.name %></h3>
+                        </div>
+                        <p class="service-description-large"><%= service.description %></p>
+                        
+                        <div class="service-features">
+                            <% if(service.id === 1) { %>
+                                <ul class="feature-list">
+                                    <li>Limpeza residencial</li>
+                                    <li>Organização de ambientes</li>
+                                    <li>Jardinagem e paisagismo</li>
+                                    <li>Cuidados com pets</li>
+                                </ul>
+                            <% } else if(service.id === 2) { %>
+                                <ul class="feature-list">
+                                    <li>Serviços elétricos</li>
+                                    <li>Encanamento e hidráulica</li>
+                                    <li>Pintura e acabamento</li>
+                                    <li>Alvenaria e construção</li>
+                                </ul>
+                            <% } else if(service.id === 3) { %>
+                                <ul class="feature-list">
+                                    <li>Desenvolvimento web</li>
+                                    <li>Design gráfico</li>
+                                    <li>Consultoria em TI</li>
+                                    <li>Suporte técnico</li>
+                                </ul>
+                            <% } else if(service.id === 4) { %>
+                                <ul class="feature-list">
+                                    <li>Cabelereiros</li>
+                                    <li>Manicures e pedicures</li>
+                                    <li>Esteticistas</li>
+                                    <li>Personal trainers</li>
+                                </ul>
+                            <% } else if(service.id === 5) { %>
+                                <ul class="feature-list">
+                                    <li>Aulas particulares</li>
+                                    <li>Reforço escolar</li>
+                                    <li>Cursos de idiomas</li>
+                                    <li>Preparação para concursos</li>
+                                </ul>
+                            <% } else if(service.id === 6) { %>
+                                <ul class="feature-list">
+                                    <li>Motoristas particulares</li>
+                                    <li>Delivery e entregas</li>
+                                    <li>Mudanças e fretes</li>
+                                    <li>Transporte executivo</li>
+                                </ul>
+                            <% } %>
+                        </div>
+                        
+                        <div class="service-footer">
+                            <a href="#" class="btn btn-primary">Encontrar Profissionais</a>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works -->
+        <section class="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Como Funciona</h2>
+                    <p class="section-description">
+                        Em apenas 3 passos simples você encontra o profissional ideal
+                    </p>
+                </div>
+                
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Descreva seu Projeto</h3>
+                            <p class="step-description">
+                                Conte-nos o que você precisa em poucos cliques
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Receba Propostas</h3>
+                            <p class="step-description">
+                                Profissionais interessados entrarão em contato
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Escolha e Contrate</h3>
+                            <p class="step-description">
+                                Compare perfis, avaliações e escolha o melhor
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="benefits">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Vantagens do Linka</h2>
+                    <p class="section-description">
+                        Por que milhares de pessoas confiam em nós
+                    </p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3 class="benefit-title">Segurança Garantida</h3>
+                        <p class="benefit-description">
+                            Todos os profissionais são verificados e avaliados
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <h3 class="benefit-title">Economia de Tempo</h3>
+                        <p class="benefit-description">
+                            Encontre profissionais rapidamente sem perder tempo
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <h3 class="benefit-title">Melhor Preço</h3>
+                        <p class="benefit-description">
+                            Compare orçamentos e escolha a melhor opção
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i data-lucide="headphones"></i>
+                        </div>
+                        <h3 class="benefit-title">Suporte 24/7</h3>
+                        <p class="benefit-description">
+                            Nossa equipe está sempre pronta para ajudar
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Pronto para encontrar o profissional ideal?</h2>
+                    <p class="cta-description">
+                        Cadastre-se agora e tenha acesso a milhares de profissionais qualificados
+                    </p>
+                    <div class="cta-actions">
+                        <a href="#" class="btn btn-primary btn-lg">Começar Agora</a>
+                        <a href="/contato" class="btn btn-outline btn-lg">Tire suas Dúvidas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/public/js/main.js"></script>
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

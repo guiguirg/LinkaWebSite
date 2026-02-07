@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <meta name="keywords" content="<%= keywords %>">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/public/images/logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/components.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="<%= page %>-page">
+    <%- include('partials/header') %>
+    
+    <main>
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Sobre o Linka</h1>
+                <p class="page-description">Conheça nossa história e missão</p>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2 class="section-title">Quem Somos</h2>
+                        <p class="text-lg">
+                            O <strong>Linka</strong> é a plataforma que revoluciona a forma como você encontra profissionais 
+                            qualificados e confiáveis. Fundada em 2025 no Rio Grande, RS, nascemos com o propósito 
+                            de solucionar um dos maiores desafios do dia a dia: conectar quem precisa de serviços 
+                            com os melhores profissionais da região.
+                        </p>
+                        <p>
+                            Somos mais que um marketplace de serviços. Somos uma ponte de confiança que transforma 
+                            a maneira como prestadores e clientes se relacionam. Com tecnologia de ponta, verificação 
+                            rigorosa de profissionais e sistema de avaliações transparentes, garantimos segurança 
+                            e qualidade em cada conexão.
+                        </p>
+                        <p>
+                            Do eletricista ao personal trainer, do encanador ao professor particular - no Linka, 
+                            você encontra centenas de categorias de serviços e milhares de profissionais prontos 
+                            para atender suas necessidades com excelência.
+                        </p>
+                    </div>
+                    <div class="story-image">
+                        <div class="about-visual">
+                            <div class="visual-card">
+                                <i data-lucide="shield-check"></i>
+                                <h4>Segurança</h4>
+                                <p>Profissionais verificados</p>
+                            </div>
+                            <div class="visual-card">
+                                <i data-lucide="star"></i>
+                                <h4>Qualidade</h4>
+                                <p>Avaliações reais</p>
+                            </div>
+                            <div class="visual-card">
+                                <i data-lucide="zap"></i>
+                                <h4>Rapidez</h4>
+                                <p>Conexão instantânea</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission">
+            <div class="container">
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+                        <h3 class="mission-title">Nossa Missão</h3>
+                        <p class="mission-description">
+                            Conectar pessoas aos melhores profissionais com praticidade, segurança e transparência, 
+                            transformando a prestação de serviços em uma experiência confiável e satisfatória 
+                            para todos os envolvidos.
+                        </p>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <h3 class="mission-title">Nossa Visão</h3>
+                        <p class="mission-description">
+                            Ser a plataforma líder de serviços no Brasil, reconhecida pela excelência, 
+                            inovação tecnológica e pelo impacto positivo na vida de milhões de profissionais 
+                            e clientes em todo o país.
+                        </p>
+                    </div>
+                    
+                    <div class="mission-card">
+                        <div class="mission-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <h3 class="mission-title">Nossos Valores</h3>
+                        <p class="mission-description">
+                            <strong>Confiança</strong> em cada conexão, <strong>transparência</strong> nas relações, 
+                            <strong>qualidade</strong> nos serviços, <strong>inovação</strong> constante e 
+                            <strong>respeito</strong> por profissionais e clientes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <h2 class="section-title text-center">Linka em Números</h2>
+                <p class="section-description text-center" style="max-width: 600px; margin: 0 auto 3rem;">
+                    Dados reais e atualizados em tempo real
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-number"><%= analytics.uniqueVisitors %></div>
+                        <div class="stat-label">Visitantes Únicos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <div class="stat-number"><%= analytics.totalPageViews %></div>
+                        <div class="stat-label">Visualizações de Páginas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="stat-number"><%= analytics.visitsToday %></div>
+                        <div class="stat-label">Acessos Hoje</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i data-lucide="calendar"></i>
+                        </div>
+                        <div class="stat-number"><%= analytics.visitsYesterday %></div>
+                        <div class="stat-label">Acessos Ontem</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-linka">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Por Que Escolher o Linka?</h2>
+                    <p class="section-description">
+                        Diferenciais que tornam nossa plataforma única e confiável
+                    </p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3 class="benefit-title">Verificação Rigorosa</h3>
+                        <p class="benefit-description">
+                            Todos os profissionais passam por verificação de identidade, antecedentes 
+                            e qualificações antes de atuar na plataforma.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="message-square"></i>
+                        </div>
+                        <h3 class="benefit-title">Avaliações Transparentes</h3>
+                        <p class="benefit-description">
+                            Sistema de avaliações reais de clientes, garantindo transparência e 
+                            auxiliando na escolha do melhor profissional.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="clock"></i>
+                        </div>
+                        <h3 class="benefit-title">Atendimento Rápido</h3>
+                        <p class="benefit-description">
+                            Conexão instantânea com profissionais disponíveis. Solicitações respondidas 
+                            em minutos, não em dias.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <h3 class="benefit-title">Preços Justos</h3>
+                        <p class="benefit-description">
+                            Compare propostas de diferentes profissionais e escolha a melhor relação 
+                            custo-benefício para seu orçamento.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <h3 class="benefit-title">App Intuitivo</h3>
+                        <p class="benefit-description">
+                            Plataforma moderna e fácil de usar. Gerencie tudo pelo celular com 
+                            notificações em tempo real.
+                        </p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i data-lucide="headphones"></i>
+                        </div>
+                        <h3 class="benefit-title">Suporte Dedicado</h3>
+                        <p class="benefit-description">
+                            Equipe de atendimento pronta para ajudar você em qualquer dúvida ou 
+                            problema, sempre que precisar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <%- include('partials/footer') %>
+    
+    <!-- JavaScript -->
+    <script src="/public/js/main.js"></script>
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
